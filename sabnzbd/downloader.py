@@ -33,6 +33,7 @@ import sabnzbd
 from sabnzbd.decorators import synchronized, NzbQueueLocker, DOWNLOADER_CV
 from sabnzbd.constants import MAX_DECODE_QUEUE, LIMIT_DECODE_QUEUE
 from sabnzbd.decoder import Decoder
+from sabnzbd.getipaddress import publicipv4
 from sabnzbd.newswrapper import NewsWrapper, request_server_info
 from sabnzbd.articlecache import ArticleCache
 import sabnzbd.notifier as notifier
@@ -106,6 +107,8 @@ class Server(object):
             2 - and self.info has more than 1 entry (read: IP address): Return the quickest IP based on the happyeyeballs algorithm
             In case of problems: return the host name itself
         """
+        # BS Check here
+        logging.info(publicipv4())
         # Check if already a successful ongoing connection
         if self.busy_threads and self.busy_threads[0].nntp:
             # Re-use that IP
