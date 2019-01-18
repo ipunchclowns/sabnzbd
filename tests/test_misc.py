@@ -41,4 +41,3 @@ class MiscTest(unittest.TestCase):
 
     def test_safe_lower(self):
         self.assertEqual("all caps", misc.safe_lower("ALL CAPS"))
-	self.testfail()
